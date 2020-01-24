@@ -61,35 +61,24 @@ public class Tableaux {
     }
 
     public static int maximum(int[] tab) {
-        int imax = 0;
-        for (int i = 0; i < tab.length - 1; i++) {
-            imax = i;
-            for (int j = i + 1; j < tab.length; j++) {
-                if (tab[j] > tab[imax])
-                    imax = j;
-            }
-        }
-        return imax;
+        int max = tab[0];
+        for (int elem : tab)
+            if (elem > max)
+                max = elem;
+                return max;
     }
     public static int minimum(int[] tab) {
-        int imin = 0;
-        for (int i = 0; i < tab.length - 1; i++) {
-            imin = i;
-            for (int j = i + 1; j < tab.length; j++) {
-                if (tab[j] < tab[imin])
-                    imin = j;
-            }
-        }
-        return imin;
+        int min = tab[0];
+        for (int elem : tab)
+            if (elem < min)
+                min = elem;
+        return min;
     }
     public static double moyenne (int [] tab){
         double moyenne = 0;
-        int x = 0;
         int total = 0;
-        while (x < tab.length){
-            total =+ tab[x];
-            x++;
-        }
+        for (int elem : tab)
+            total += elem;
         moyenne = total/tab.length;
         return moyenne;
     }
@@ -105,5 +94,20 @@ public class Tableaux {
         if (found)
         return i;
         else return -1;
+    }
+    public static void trierDecroissantSSS(String[] tab) {
+        int imin;
+        for (int i = 0; i < tab.length - 1; i++) {
+            imin = i;
+            for (int j = i + 1; j < tab.length; j++) {
+                if (Integer.parseInt(tab[j]) > Integer.parseInt(tab[imin]))
+                    imin = j;
+            }
+            if (imin != i)
+                permute(tab, i, imin);
+        }
+    }
+    public static void print(String[] tab) {
+        System.out.println(Arrays.toString(tab));
     }
 }
